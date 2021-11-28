@@ -1,9 +1,16 @@
 module Main where
 
 import qualified Greeter (greet)
-import qualified System.Environment (getArgs)
+import System.Environment (getArgs)
+import Control.Exception (IOException, catch)
+
+tryGreeting :: IO ()
+tryGreeting = do
+  (who:_) <- getArgs
+  putStrLn $ Greeter.greet who
 
 main :: IO ()
-main = do
-  (who:_) <- System.Environment.getArgs
-  putStrLn $ Greeter.greet who
+main = tryGreeting `catch` handler
+  where
+    handler :: IOException -> IO ()
+    handler e = putStrLn "Who shall I greet? :-)"
