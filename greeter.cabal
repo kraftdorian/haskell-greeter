@@ -1,0 +1,36 @@
+cabal-version:      2.4
+name:               greeter
+version:            0.1.0.0
+synopsis:           Simple greeter app
+description:        My first cabal app
+license:            MIT
+author:             Damian Kajzer
+extra-source-files: CHANGELOG.md
+build-type:         Simple
+
+library
+    exposed-modules:  Greeter
+
+    -- Modules included in this library but not exported.
+    -- other-modules:
+
+    -- LANGUAGE extensions used by modules in this package.
+    -- other-extensions:
+    build-depends:    base ^>=4.15.0.0
+    hs-source-dirs:   src
+    default-language: Haskell2010
+
+executable greeter
+    main-is:          Main.hs
+
+    -- Modules included in this executable, other than Main.
+    -- other-modules:
+
+    -- LANGUAGE extensions used by modules in this package.
+    -- other-extensions:
+    build-depends:
+        base ^>=4.15.0.0,
+        greeter
+
+    hs-source-dirs:   app
+    default-language: Haskell2010
